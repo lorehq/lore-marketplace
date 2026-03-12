@@ -7,7 +7,8 @@
   "hooks": {
     "pre-tool-use": [
       { "name": "Orchestrator Guard", "script": "SCRIPTS/orchestrator-guard.mjs" },
-      { "name": "Plan Protection", "script": "SCRIPTS/plan-protection.mjs" }
+      { "name": "Plan Protection", "script": "SCRIPTS/plan-protection.mjs" },
+      { "name": "Dev Server Blocker", "script": "SCRIPTS/dev-server-blocker.mjs" }
     ],
     "post-tool-use": [
       { "name": "Verification Injector", "script": "SCRIPTS/verification-injector.mjs" },
@@ -16,7 +17,8 @@
       { "name": "Wisdom Injector", "script": "SCRIPTS/wisdom-injector.mjs" },
       { "name": "Trace Logger", "script": "SCRIPTS/trace-logger.mjs" },
       { "name": "Remember Extractor", "script": "SCRIPTS/remember-extractor.mjs" },
-      { "name": "Bash History", "script": "SCRIPTS/bash-history.mjs" }
+      { "name": "Bash History", "script": "SCRIPTS/bash-history.mjs" },
+      { "name": "Tmux Reminder", "script": "SCRIPTS/tmux-reminder.mjs" }
     ],
     "prompt-submit": [
       { "name": "Keyword Detector", "script": "SCRIPTS/keyword-detector.mjs" }
@@ -28,7 +30,8 @@
       { "name": "Worker Context", "script": "SCRIPTS/subagent-context.mjs" }
     ],
     "stop": [
-      { "name": "Worker Persistence", "script": "SCRIPTS/worker-persistence.mjs" }
+      { "name": "Worker Persistence", "script": "SCRIPTS/worker-persistence.mjs" },
+      { "name": "Git Push Reminder", "script": "SCRIPTS/git-push-reminder.mjs" }
     ],
     "pre-compact": [
       { "name": "Plan Context", "script": "SCRIPTS/plan-context-injector.mjs" }

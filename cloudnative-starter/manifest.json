@@ -8,7 +8,8 @@
     "pre-tool-use": [
       { "name": "Safety Net", "script": "SCRIPTS/safety-net.mjs" },
       { "name": "Doc Blocker", "script": "SCRIPTS/doc-blocker.mjs" },
-      { "name": "Git Push Review", "script": "SCRIPTS/git-push-review.mjs" }
+      { "name": "Git Push Review", "script": "SCRIPTS/git-push-review.mjs" },
+      { "name": "Tmux Guard", "script": "SCRIPTS/tmux-guard.mjs" }
     ],
     "post-tool-use": [
       { "name": "Console Log Guard", "script": "SCRIPTS/console-log-guard.mjs" },

@@ -11,7 +11,7 @@ Adapted from [cloudnative-co/claude-code-starter-kit](https://github.com/cloudna
 - **8 rules** -- coding style, git workflow, testing, security, performance, patterns, agent orchestration, automation hooks
 - **25 skills** -- 11 reference skills + 14 user-invocable workflow skills (converted from commands)
 - **9 agents** -- architect, planner, tdd-guide, code-reviewer, security-reviewer, build-error-resolver, e2e-runner, refactor-cleaner, doc-updater
-- **4 hooks** -- pre-tool-use (doc blocker, push review, destructive command guard), post-tool-use (console.log warning, auto-format, PR logging), pre-compact (auto-commit checkpoint), stop (debug logging reminder, uncommitted changes reminder)
+- **9 hook scripts** across 4 events -- pre-tool-use (safety net, doc blocker, push review, tmux guard), post-tool-use (console.log warning, auto-format, PR logging), pre-compact (auto-commit checkpoint), stop (debug logging reminder)
 
 ## Changes from Original
 
@@ -25,16 +25,13 @@ Adapted from [cloudnative-co/claude-code-starter-kit](https://github.com/cloudna
 - Installer infrastructure (setup.sh, wizard, profiles, i18n, lib)
 - Claude Code memory files and settings configs
 - Model selection guidance from performance rule (platform-specific)
-- Hooks dropped as non-portable: auto-update (infrastructure), memory-persistence (Lore has its own), safety-net (required cc-safety-net binary — logic rewritten into pre-tool-use), statusline (Claude Code-specific), strategic-compact (/compact is Claude-specific), tmux-hooks (terminal-specific)
+- Hooks dropped as non-portable: auto-update (infrastructure), memory-persistence (Lore has its own), statusline (Claude Code-specific), strategic-compact (/compact is Claude-specific)
 
 ### Hooks Converted
-- 12 Claude Code hooks (hooks.json format with tool matchers) merged into 4 Lore hook scripts (.mjs)
-- Multiple hooks per event consolidated into single scripts with internal tool-name switching
-- Bash inline scripts rewritten to Node.js ES modules
-- `doc-blocker` + `git-push-review` + safety-net logic → `pre-tool-use.mjs`
-- `console-log-guard` + `prettier-hooks` + `pr-creation-log` → `post-tool-use.mjs`
-- `pre-compact-commit` → `pre-compact.mjs`
-- `console-log-guard` (stop variant) + uncommitted changes check → `stop.mjs`
+- 12 Claude Code hooks (hooks.json format with inline bash) converted to 9 Node.js ES module scripts (.mjs)
+- Each behavior is a separate script file (one behavior per file)
+- `safety-net` rewritten from cc-safety-net binary dependency to standalone JS logic
+- `tmux-hooks` converted to `tmux-guard.mjs` — blocks dev servers, warns on long-running commands outside tmux
 
 ### Generalized
 - Platform-specific path references (`~/.claude/agents/`, `~/.claude/commands/`) removed or made generic

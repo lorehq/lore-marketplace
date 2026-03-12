@@ -49,12 +49,13 @@ Workers discover things during implementation and emit `<remember category="lear
 
 ### Safety Hooks
 
-14 hooks enforce the orchestration model:
+17 hooks enforce the orchestration model and development quality:
 
 | Hook | Purpose |
 |------|---------|
 | Orchestrator Guard | Blocks orchestrator from editing files -- must delegate |
 | Plan Protection | Blocks workers from editing plan files -- only orchestrator manages plans |
+| Dev Server Blocker | Blocks dev servers (npm run dev, vite, etc.) in agent sessions |
 | Worker Persistence | Blocks workers from stopping while tasks remain |
 | Verification Injector | Reminds to verify after delegation -- "don't trust, verify" |
 | Error Detector | Injects investigation prompt when commands fail |
@@ -63,17 +64,19 @@ Workers discover things during implementation and emit `<remember category="lear
 | Remember Extractor | Captures `<remember>` tags from worker output into wisdom |
 | Trace Logger | Logs every tool use to `.maestro/trace.jsonl` |
 | Bash History | Mirrors successful agent commands to `~/.bash_history` |
+| Tmux Reminder | Warns when long-running commands run outside tmux |
 | Session Start | Injects active plans, wisdom, priority notes at session start |
 | Subagent Context | Injects plan + wisdom when workers spawn |
 | Plan Context | Preserves active plan names through context compaction |
 | Keyword Detector | Detects `eco`/`ultrawork`/`think` keywords for mode switching |
+| Git Push Reminder | Reminds about unpushed commits when session ends |
 
 ## What's Included
 
 - **10 agents** -- orchestrator, kraken, spark, build-fixer, oracle, critic, security-reviewer, leviathan, progress-reporter, wisdom-synthesizer
 - **71 skills** -- orchestration workflows, language patterns (Go, Python, Swift, TypeScript, C++, Java, Django, Spring Boot), testing, security, infrastructure, frontend, API design, content creation, AI/ML, and meta-development
 - **29 rules** -- 9 common + 5 each for Go, Python, Swift, TypeScript (scoped by file glob)
-- **14 hooks** across 7 events
+- **17 hooks** across 7 events
 
 ## Changes From Source
 
@@ -84,7 +87,7 @@ Workers discover things during implementation and emit `<remember category="lear
 - Claude-specific frontmatter fields (`lifecycle`, `domain`) removed; `argument-hint` preserved as pass-through; Lore-standard `user-invocable: true` added
 - All 10 agents added with full frontmatter preserved (`phase`, `model`, `disallowedTools`, `tools` as YAML list)
 - References to `maestro:` prefixed skill names updated to unprefixed names throughout skill bodies
-- All 14 maestro-specific hook scripts converted from bash to Node.js ES modules (.mjs) and generalized for cross-platform use; 8 ECC (Enhanced Code Companion) hooks excluded as generic quality gates with their own config system
+- All 17 hook scripts converted from bash to Node.js ES modules (.mjs) and generalized for cross-platform use; 3 ECC hooks (dev server blocker, tmux reminder, git push reminder) included with `MAESTRO_ENABLE_ECC_QUALITY_GATES` toggle; 5 ECC hooks excluded (learning-observe, continuous-learning, skill-stocktake, strategic-compact, dev-server-blocker-v2) as they depend on the ECC skillpack config system
 - Source infrastructure files (PRECEDENCE.md, README.md, install.sh, CHANGELOG.md, evals/, templates/) not included
 
 ## License
