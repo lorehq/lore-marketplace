@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "bundles": [
+    {
+      "slug": "lore-os",
+      "name": "Lore OS",
+      "description": "Behavioral layer — hook scripts with graduated signal prompts, ambiguity scanning, and session memory",
+      "repo": "https://github.com/lorehq/lore-os.git",
+      "author": "lorehq",
+      "tags": ["hooks", "memory", "signals", "official"]
+    },
+    {
+      "slug": "cloudnative-starter",
+      "name": "CloudNative Starter",
+      "description": "Comprehensive development bundle — code review, TDD, architecture, security, build resolution, and workflow orchestration",
+      "repo": "https://github.com/lorehq/lore-bundles.git",
+      "path": "cloudnative-starter",
+      "author": "lorehq",
+      "tags": ["development", "code-review", "tdd", "security", "community"]
+    },
+    {
+      "slug": "stack-skills",
+      "name": "Stack Skills",
+      "description": "5 cognitive firewall skills — adversarial review, creativity sampling, cross-verified research, pre-mortem analysis, and reasoning tracing",
+      "repo": "https://github.com/lorehq/lore-bundles.git",
+      "path": "stack-skills",
+      "author": "lorehq",
+      "tags": ["cognitive", "reasoning", "analysis", "community"]
+    },
+    {
+      "slug": "maestro",
+      "name": "Maestro",
+      "description": "Comprehensive development bundle — 60+ skills covering language patterns, testing, security, API design, deployment, and orchestration",
+      "repo": "https://github.com/lorehq/lore-bundles.git",
+      "path": "maestro",
+      "author": "lorehq",
+      "tags": ["development", "fullstack", "testing", "security", "community"]
+    },
+    {
+      "slug": "dev-discipline",
+      "name": "Dev Discipline",
+      "description": "Git workflow discipline — commit enforcement, execution planning, commit diaries, reconciliation audits, and multi-agent coordination",
+      "repo": "https://github.com/lorehq/lore-bundles.git",
+      "path": "dev-discipline",
+      "author": "lorehq",
+      "tags": ["git", "workflow", "discipline", "community"]
+    }
+  ]
+}
