@@ -1,6 +1,8 @@
-# Lore Marketplace
+# Lore Bundles
 
 Community bundles for [Lore](https://github.com/lorehq/lore).
+
+This repo contains the bundle source code and the [registry index](registry.json) used by the Lore CLI and TUI for bundle discovery.
 
 ## Bundles
 
@@ -16,6 +18,8 @@ Community bundles for [Lore](https://github.com/lorehq/lore).
 ```bash
 lore bundle install <slug>
 ```
+
+Or browse and install from the TUI dashboard's Marketplace tab.
 
 ## License
 
